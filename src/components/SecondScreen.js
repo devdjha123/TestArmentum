@@ -5,6 +5,7 @@ import {
   Text,
   View,
 	Image,
+  Button,
   TouchableOpacity
 } from 'react-native';
 
@@ -13,7 +14,23 @@ import Tabs from 'react-native-tabs';
 import landingImg from '../images/landing-page.png';
 import ImageSlider from 'react-native-image-slider';
 import foodIcon1 from '../images/imgmenu1.png';
+import minus from '../images/minus.png';
 import Head_Image from '../images/Head_Image.png';
+import imgmenu1 from '../images/imgmenu1.png';
+import imgmenu2 from '../images/imgmenu2.png';
+import imgmenu3 from '../images/imgmenu3.png';
+import imgmenu4 from '../images/imgmenu4.png';
+import imgmenu5 from '../images/imgmenu5.png';
+import imgmenu6 from '../images/imgmenu6.png';
+import imgmenu7 from '../images/imgmenu7.png';
+import imgmenu8 from '../images/imgmenu8.png';
+import imgmenu9 from '../images/imgmenu9.png';
+import imgmenu10 from '../images/imgmenu10.png';
+import Notifi_Btn from '../images/Notifi_Btn.png';
+import Home_Btn_nrm from '../images/Home_Btn_nrm.png';
+import Menu_Btn from  '../images/Menu_Btn.png';
+import Order_Btn_nrm from '../images/Order_Btn_nrm.png';
+import Logo from '../images/Logo.jpg';
 
 import PhotoGrid from 'react-native-photo-grid';
 
@@ -26,19 +43,20 @@ export default class SecondScreen extends Component {
     var self = this;
     return (
       <View style={styles.container}>
-
+           { this.state.page == 'zero' ? <HomePage /> : <Text></Text> }
         { this.state.page == 'first' ? <HomePage /> : <Text></Text> }
         { this.state.page == 'second' ? <MenuPage /> : <Text></Text> }
         { this.state.page == 'third' ? <Cart /> : <Text></Text> }
           <Text style={styles.instructions}>
               Selected page: {this.state.page}
           </Text>
-					<Tabs selected={this.state.page} style={{backgroundColor:'white'}}
+					<Tabs selected={this.state.page} style={{backgroundColor:'#000'}}
 								selectedStyle={{color:'red'}} onSelect={el=>this.setState({page:el.props.name})}>
-							<Text name="first">Home</Text>
-							<Text name="second" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>Menu</Text>
-							<Text name="third">Orders</Text>
-							<Text name="fourth" selectedStyle={{color:'green'}}>Notifications</Text>
+
+							<Text name="first"selectedIconStyle={{borderTopWidth:2,borderTopColor:'#f00',backgroundColor:'#800'}}><Image source={Home_Btn_nrm} style={style3.homeimg}></Image></Text>
+							<Text name="second" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red',backgroundColor:'#800'}}><Image source={Menu_Btn} style={style3.homeimg}></Image></Text>
+							<Text name="third" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red',backgroundColor:'#800'}}><Image source={Order_Btn_nrm} style={style3.homeimg}></Image></Text>
+							<Text name="fourth"selectedIconStyle={{borderTopWidth:2,borderTopColor:'red',backgroundColor:'#800'}}><Image source={Notifi_Btn} style={style3.homeimg}></Image></Text>
 					</Tabs>
       </View>
     );
@@ -72,8 +90,8 @@ class MenuPage extends Component {
   }
   componentDidMount() {
     // Build an array of 60 photos
-    let items = Array.apply(null, Array(60)).map((v, i) => {
-      return { id: i, src: 'http://placehold.it/200x200?text='+(i+1), val: 'Cafe Kitchen ' + (i+1) }
+    let items = Array.apply(null, Array(18)).map((v, i) => {
+      return { id: i, src: 'https://image.ibb.co/bupNba/imgmenu7.png', val: 'Cafe Kitchen ' + (i+1) }
     });
     this.setState({ items });
   }
@@ -93,16 +111,16 @@ class MenuPage extends Component {
           <View style={styles.banner_container}>
               <ImageSlider
                   images={[
-                      `http://placeimg.com/640/480/any`,
-                      `http://placeimg.com/640/480/any`,
-                      `http://placeimg.com/640/480/any`,
+                      `https://image.ibb.co/f5sm2F/Head_Image.png`,
+                      `https://image.ibb.co/f5sm2F/Head_Image.png`,
+                      `https://image.ibb.co/f5sm2F/Head_Image.png`,
                   ]}
                   position={this.state.position}
                   onPositionChanged={position => this.setState({position})}/>
                   <PhotoGrid
                     data = { this.state.items }
                     itemsPerRow = { 3 }
-                    itemMargin = { 1 }
+                    itemMargin = { 2 }
                     renderHeader = { this.renderHeader }
                     renderItem = { this.renderItem }
                   />
@@ -111,7 +129,7 @@ class MenuPage extends Component {
   }
   renderHeader() {
     return(
-      <Text>I'm on top!</Text>
+      <Text></Text>
     );
   }
   renderFooter() {
@@ -133,12 +151,15 @@ class MenuPage extends Component {
             source = {{ uri: item.src }}
 
           >
-            <Text style={{fontWeight: 'bold'}}>Item Name</Text>
-            <View style={{marginTop: 40, marginLeft: 0}}>
-              <Text style={{fontWeight: 'bold'}}>Open Now</Text>
-              <Text style={{marginLeft: 30}}>{ Math.round(Math.random() * (5 - 1) + 1) } star</Text>
-            </View>
+
           </Image>
+          <View style={{flex:1,marginTop:2}}>
+            <Text style={{fontWeight: 'bold'}}>Item Name</Text>
+            <View style={{marginTop: 2, marginLeft: 0}}>
+              <Text style={{fontWeight: 'normal',color:'red'}}>Open Now</Text>
+              <Text style={{marginLeft: 80,color:'red',marginTop:-20}}>{ Math.round(Math.random() * (5 - 1) + 1) } *</Text>
+            </View>
+            </View>
         </TouchableOpacity>
       )
     }
@@ -154,21 +175,86 @@ class Cart extends Component {
 
   render(){
     return(
-      <View>
-        <Text>MOETS CURRY LEAF</Text>
-        <View>
+      <View style={{flex: 1.2 ,marginTop:30,backgroundColor:'#ccc'}}>
+      <View style={{flex: 1}}>
+        <View style={{flexDirection: 'row',backgroundColor:'#f00'}}>
+
+        <Text style={{textAlign:'left'}}>MOETS CURRY LEAF</Text>
+        <Text style={{textAlign:'right',marginLeft:100}}>$2.0</Text>
+
+        </View>
+        <View style={{flexDirection: 'row',marginTop:30}}>
           <Image source={foodIcon1} style={styles1.foodIcon1} ></Image>
-          <View>
+          <View style={{flexDirection: 'row',marginTop:20}}>
+
             <Text>
-                Noodles Soup
+              Noodles Soup ~{"\n"} Boilde Noodless
             </Text>
             <Text>
-                Boilde Noodles served in pot with broth
+                $3.5
+            </Text>
+            <Text>
+
+            </Text>
+            <Text style={{textAlign:'right',marginLeft:40}} >
+                (-) 1 (+)
             </Text>
 
           </View>
         </View>
-      </View>
+        </View>
+        <View style={{flex: 1,marginTop:-140}}>
+          <View style={{flexDirection: 'row',backgroundColor:'#f00'}}>
+
+          <Text style={{textAlign:'left'}}>MOETS CURRY LEAF</Text>
+          <Text style={{textAlign:'right',marginLeft:100}}>$2.0</Text>
+
+          </View>
+          <View style={{flexDirection: 'row',marginTop:30}}>
+            <Image source={foodIcon1} style={styles1.foodIcon1} ></Image>
+            <View style={{flexDirection: 'row',marginTop:20}}>
+
+              <Text>
+                Noodles Soup ~{"\n"} Boilde Noodless
+              </Text>
+              <Text>
+                  $3.5
+              </Text>
+              <Text>
+
+              </Text>
+              <Text style={{textAlign:'right',marginLeft:40}} >
+                  (-) 1 (+)
+              </Text>
+
+            </View>
+          </View>
+          <View style={{flexDirection: 'column',marginTop:30,alignItems:'center'}}>
+          <Text>
+           SubTotal $4.0
+          </Text>
+          <Text>
+           ServiceTax $5.9
+          </Text>
+          <Text>
+           Total $15.0
+          </Text>
+
+
+          </View>
+<View style={{flexDirection: 'column',marginTop:30,alignItems:'center'}}>
+          <Button
+
+  title="Complete Order"
+  color="#841584"
+  accessibilityLabel="Learn more about this purple button"
+/></View>
+
+          </View>
+        </View>
+
+
+
     )
   }
 }
@@ -179,12 +265,31 @@ const styles1 = StyleSheet.create({
   foodIcon1: {
     width: 50,
     height: 50,
-    // flex: 1,
-    marginTop: 0,
+
+    marginTop: 9,
     flexDirection: 'row'
   }
 })
 
+const style3 = StyleSheet.create({
+  homeimg:{
+    width: 100,
+    height: 100,
+    //flex: 1,
+  }
+})
+// const style5 = StyleSheet.create({
+//   logoimg:{
+//     width: 300,
+//     height: 100,
+//     flex: 1,
+//     margin:5,
+//     paddingTop:10,
+//     paddingLeft:10,
+//     marginRight:300
+//
+//   }
+// })
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -213,7 +318,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     color: 'white',
 		marginLeft: 5,
-		marginTop: (DEVICE_HEIGHT/2+30),
+		marginTop: (DEVICE_HEIGHT/2+25),
 		marginRight: DEVICE_WIDTH/8
 	},
 	backgroundImage: {

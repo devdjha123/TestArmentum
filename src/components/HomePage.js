@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -13,30 +14,21 @@ import landingImg from '../images/landing-page.png';
 import ImageSlider from 'react-native-image-slider';
 import foodIcon1 from '../images/imgmenu1.png';
 import Head_Image from '../images/Head_Image.png';
-import Menu_Btn.png from '../images/Menu_Btn.png.png';
 import {  StackNavigator,} from 'react-navigation';
-class Cart extends Component {
-  constructor() {
-    super();
-  }
+import SecondScreen from "./SecondScreen";
 
+class HomePage extends Component {
   render(){
     return(
       <View>
-        <Text>MOETS CURRY LEAF</Text>
-        <View>
-          <Image source={foodIcon1} style={styles1.foodIcon1} ></Image>
-          <View>
-            <Text>
-                Noodles Soup
-            </Text>
-            <Text>
-                Boilde Noodles served in pot with broth
-            </Text>
+        <Image source={landingImg} style={styles.backgroundImage} >
 
-          </View>
-        </View>
+            <Text style={styles.headline}>Food</Text>
+            <Text style={styles.headline1}>Panda</Text>
+
+        </Image>
       </View>
+
     )
   }
 }
